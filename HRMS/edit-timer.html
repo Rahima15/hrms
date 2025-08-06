@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Timer</title></head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <header>
+    <h1>🌐 HRMS Workflow System</h1>
+    <p>Manage interviews, pre-joining, training, and more!</p>
+  </header>
+  <h2>Post-Submission Edit</h2>
+  <p id="status"></p>
+  <button onclick="goToHR()">Proceed to HR Confirmation</button>
+
+  <script>
+    function checkTimer() {
+      const submittedAt = localStorage.getItem("submittedAt");
+      const status = document.getElementById("status");
+
+      if (!submittedAt) {
+        status.textContent = "No submission found.";
+        return;
+      }
+
+      const now = new Date().getTime();
+      const diffHours = (now - parseInt(submittedAt)) / (1000 * 60 * 60);
+
+      if (diffHours > 2) {
+        status.textContent = "Edit window expired. Proceed to HR confirmation.";
+      } else {
+        const remaining = (2 - diffHours).toFixed(2);
+        status.textContent = `Edit allowed. ${remaining} hour(s) left.`;
+      }
+    }
+
+    function goToHR() {
+      window.location.href = "hr-confirmation.html";
+    }
+
+    checkTimer();
+  </script>
+
+  <footer>
+    &copy; 2025 HRMS System | Designed to make things easier
+  </footer>
+</body>
+</html>

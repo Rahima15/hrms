@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head><title>Pre-Joining</title></head>
+ <link rel="stylesheet" href="style.css">
+<body>
+    <header>
+    <h1>🌐 HRMS Workflow System</h1>
+    <p>Manage interviews, pre-joining, training, and more!</p>
+  </header>
+  <h2>Pre-Joining Form</h2>
+  <form id="preJoinForm">
+  <label>Name: <input type="text" id="name"></label>
+  <label>Mobile No.: <input type="text" id="mobile"></label>
+  <label>Email: <input type="email" id="email"></label>
+  <label>Aadhar No.: <input type="text" id="aadhar"></label>
+  <label>PAN No.: <input type="text" id="pan"></label>
+  <label>Education: <input type="text" id="education"></label>
+  <label>Referral Name: <input type="text" id="referral"></label>
+  <label>CTC Details: <textarea id="ctc"></textarea></label>
+
+  <label>Salary Slip - Month 1: <input type="file" id="slip1"></label>
+  <label><input type="checkbox" id="check1"> I confirm I uploaded Month 1 slip</label>
+
+  <label>Salary Slip - Month 2: <input type="file" id="slip2"></label>
+  <label><input type="checkbox" id="check2"> I confirm I uploaded Month 2 slip</label>
+
+  <label>Salary Slip - Month 3: <input type="file" id="slip3"></label>
+  <label><input type="checkbox" id="check3"> I confirm I uploaded Month 3 slip</label>
+
+  <label><input type="checkbox" id="finalCheck"> I confirm all information is true</label>
+
+  <br><br>
+  <button type="button" onclick="submitForm()">Submit</button>
+</form>
+    </section>
+
+ <script>
+  function submitForm() {
+    const name = document.getElementById("name").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const aadhar = document.getElementById("aadhar").value.trim();
+    const pan = document.getElementById("pan").value.trim();
+    const education = document.getElementById("education").value.trim();
+    const referral = document.getElementById("referral").value.trim();
+    const ctc = document.getElementById("ctc").value.trim();
+    const finalCheck = document.getElementById("finalCheck").checked;
+
+    if (!name || !mobile || !email || !aadhar || !pan || !education || !ctc || !finalCheck) {
+      alert("Please fill all required fields and confirm the checkbox.");
+      return;
+    }
+
+    // Save to localStorage
+    localStorage.setItem("name", name);
+    localStorage.setItem("mobile", mobile);
+    localStorage.setItem("email", email);
+    localStorage.setItem("aadhar", aadhar);
+    localStorage.setItem("pan", pan);
+    localStorage.setItem("education", education);
+    localStorage.setItem("referral", referral);
+    localStorage.setItem("ctc", ctc);
+    localStorage.setItem("submittedAt", new Date().getTime());
+
+    alert("Form submitted successfully. Redirecting to Edit Timer page.");
+    window.location.href = "edit-timer.html";
+  }
+</script>
+
+<footer>
+    &copy; 2025 HRMS System | Designed to make things easier
+  </footer>
+</body>
+</html>

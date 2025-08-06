@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Document Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    #documentPreview {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      background: #f9f9f9;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <header>
+    <h1>🌐 HRMS Workflow System</h1>
+    <p>Manage interviews, pre-joining, training, and more!</p>
+  </header>
+
+<h2>📄 HR Document Generator</h2>
+
+<form id="docForm">
+  <label for="docType">Document Type:</label>
+  <select id="docType">
+    <option value="">-- Select Document Type --</option>
+    <option>Offer Letter</option>
+    <option>Joining Letter</option>
+    <option>Salary Slip</option>
+    <option>Promotion Letter</option>
+    <option>Increment Letter</option>
+    <option>Releasing Letter</option>
+    <option>Experience Letter</option>
+  </select>
+
+  <label for="empName">Employee Name:</label>
+  <input type="text" id="empName" placeholder="Enter employee name">
+
+  <label for="designation">Designation:</label>
+  <input type="text" id="designation" placeholder="Enter designation">
+
+  <label for="salary">Salary:</label>
+  <input type="text" id="salary" placeholder="Enter salary (optional)">
+
+  <label for="date">Date:</label>
+  <input type="date" id="date">
+
+  <button type="button" onclick="generateDocument()">Generate Document</button>
+</form>
+
+<div id="documentPreview"></div>
+
+<script>
+  function generateDocument() {
+    const docType = document.getElementById("docType").value;
+    const empName = document.getElementById("empName").value;
+    const designation = document.getElementById("designation").value;
+    const salary = document.getElementById("salary").value;
+    const date = document.getElementById("date").value;
+
+    if (!docType || !empName || !designation || !date) {
+      alert("❗ Please fill all required fields.");
+      return;
+    }
+
+    const preview = `
+      <h3>📄 ${docType}</h3>
+      <p><strong>Name:</strong> ${empName}</p>
+      <p><strong>Designation:</strong> ${designation}</p>
+      ${salary ? `<p><strong>Salary:</strong> ₹${salary}</p>` : ""}
+      <p><strong>Date:</strong> ${date}</p>
+      <p><em>This is a system-generated ${docType.toLowerCase()}.</em></p>
+    `;
+
+    const previewDiv = document.getElementById("documentPreview");
+    previewDiv.innerHTML = preview;
+    previewDiv.style.display = "block";
+
+    // Simulated email + WhatsApp notification
+    alert(`✅ ${docType} generated!\n📧 Email sent to ${empName}\n📲 WhatsApp notification sent.`);
+  }
+</script>
+<footer>
+    &copy; 2025 HRMS System | Designed to make things easier
+  </footer>
+</body>
+</html>

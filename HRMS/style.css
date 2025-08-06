@@ -1,0 +1,315 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9ff;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #0066cc;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 6px solid #0066cc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+h2 {
+  margin-top: 0;
+  color: #0066cc;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.two-column input {
+  flex: 1 1 calc(50% - 10px);
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  background: #eee;
+  padding: 15px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+.candidate-card {
+  background: #e6f3ff;
+  padding: 15px;
+  margin-top: 20px;
+  border-left: 5px solid #0077cc;
+  border-radius: 8px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-card h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+.status-update {
+  margin-top: 20px;
+  background: #fff4e6;
+  padding: 15px;
+  border-left: 5px solid #ffa500;
+  border-radius: 8px;
+}
+
+.status-update select,
+.status-update button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.status-update {
+  margin-top: 20px;
+  background: #fff4e6;
+  padding: 15px;
+  border-left: 5px solid #ffa500;
+  border-radius: 8px;
+}
+
+#linkSection {
+  margin-top: 20px;
+  background: #e3ffe3;
+  padding: 15px;
+  border-left: 5px solid #28a745;
+  border-radius: 8px;
+}
+
+#generatedLink {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+#linkSection button {
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#linkSection button:hover {
+  background-color: #0056b3;
+}
+#interviewDetails,
+.status-update {
+  background: #e6f3ff;
+  padding: 15px;
+  border-left: 5px solid #0077cc;
+  border-radius: 8px;
+}
+
+.status-update {
+  background: #fff4e6;
+  border-left-color: #ffa500;
+}
+
+#interviewLinkSection {
+  background: #e3ffe3;
+  border-left: 5px solid #28a745;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#interviewGeneratedLink {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.status-update select,
+.status-update button,
+#interviewLinkSection button {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.status-update button,
+#interviewLinkSection button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-right: 10px;
+}
+
+.status-update button:hover,
+#interviewLinkSection button:hover {
+  background-color: #0056b3;
+}
+
+ #experiencedDetails {
+    display: none;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  /* Show experienced details if "Experienced" radio is checked */
+  input[type="radio"]#experienced:checked ~ #experiencedDetails {
+    display: block;
+  }
+
+  /* Basic styling */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  textarea, input[type="text"], input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #218838;
+  }
+
+/* offer letter*/
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #offerLetter {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+  }
+  a.accept-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  /* Full-screen background container */
+.background-slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Each background slide */
+.bg-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeSlide 15s infinite;
+}
+
+/* Show each image one after another */
+.bg-slide:nth-child(1) { animation-delay: 0s; }
+.bg-slide:nth-child(2) { animation-delay: 5s; }
+.bg-slide:nth-child(3) { animation-delay: 10s; }
+
+@keyframes fadeSlide {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  30%  { opacity: 1; }
+  40%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Sticky footer layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* Optional styling for footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
