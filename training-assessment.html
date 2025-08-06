@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training & Assessment</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #assessmentSection {
+      margin-top: 30px;
+      display: none;
+    }
+    .question {
+      margin: 15px 0;
+    }
+    .submit-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <h1>🌐 HRMS Workflow System</h1>
+    <p>Manage interviews, pre-joining, training, and more!</p>
+  </header>
+<h2>AI-Powered Training & Assessment</h2>
+
+<label>Select Your Role:</label>
+<select id="roleSelect">
+  <option value="">-- Select Role --</option>
+  <option value="Developer">Developer</option>
+  <option value="Digital Marketing">Digital Marketing</option>
+  <option value="Sales">Sales</option>
+</select>
+
+<br><br>
+<button onclick="startTraining()">Start Training</button>
+
+<div id="trainingStatus" style="margin-top: 15px; font-weight: bold;"></div>
+
+<br>
+<button onclick="startAssessment()">Start Assessment</button>
+
+<div id="assessmentSection">
+  <h3>Assessment</h3>
+  <div id="questions"></div>
+  <button id="submitBtn" class="submit-btn" onclick="submitAssessment()">Submit Assessment</button>
+</div>
+
+<script>
+  let selectedRole = "";
+
+  function startTraining() {
+    selectedRole = document.getElementById("roleSelect").value;
+    if (!selectedRole) {
+      alert("❗ Please select a role before starting training.");
+      return;
+    }
+
+    // Simulate AI Training Completion
+    localStorage.setItem("trainingCompleted_" + selectedRole, "true");
+    document.getElementById("trainingStatus").innerText =
+      "✅ Training for " + selectedRole + " completed.";
+  }
+
+  function startAssessment() {
+    selectedRole = document.getElementById("roleSelect").value;
+
+    if (!selectedRole) {
+      alert("❗ Please select a role before starting assessment.");
+      return;
+    }
+
+    const trainingKey = "trainingCompleted_" + selectedRole;
+    const completed = localStorage.getItem(trainingKey);
+
+    if (!completed || completed !== "true") {
+      alert("🚫 Access Denied: Please complete training before taking the assessment.");
+      return;
+    }
+
+    // Show assessment
+    document.getElementById("assessmentSection").style.display = "block";
+    loadQuestions(selectedRole);
+  }
+
+  function loadQuestions(role) {
+    const container = document.getElementById("questions");
+    container.innerHTML = ""; // Clear previous
+
+    const devQuestions = [
+      "What is a closure in JavaScript?",
+      "What is the purpose of Git?",
+      "Explain the concept of RESTful APIs.",
+      "What is the difference between == and ===?",
+      "What is ReactJS?",
+      "How does asynchronous programming work?",
+      "What is the DOM?",
+      "What is the difference between localStorage and sessionStorage?",
+      "What are Promises in JavaScript?",
+      "Explain event bubbling in JS.",
+    ];
+
+    const hrQuestions = [
+      "Tell us about yourself.",
+      "Why do you want to join this company?",
+      "Describe a time you faced a challenge and how you handled it.",
+      "Where do you see yourself in 5 years?",
+      "How do you handle feedback or criticism?",
+    ];
+
+    const marketingQuestions = [
+      "What is SEO?",
+      "Explain PPC and its benefits.",
+      "What is ROI in marketing?",
+      "What tools do you use for analytics?",
+      "Explain A/B testing.",
+    ];
+
+    const salesQuestions = [
+      "What is your approach to lead generation?",
+      "How do you handle customer objections?",
+      "What is your sales pitch strategy?",
+      "How do you prioritize prospects?",
+      "What is CRM and why is it useful?",
+    ];
+
+    let questionsToShow = [];
+
+    if (role === "Developer") {
+      questionsToShow = devQuestions.concat(hrQuestions);
+    } else if (role === "Digital Marketing") {
+      questionsToShow = marketingQuestions.concat(hrQuestions);
+    } else if (role === "Sales") {
+      questionsToShow = salesQuestions.concat(hrQuestions);
+    }
+
+    questionsToShow.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<strong>Q${index + 1}:</strong> ${q}<br><input type="text" style="width:100%;" />`;
+      container.appendChild(div);
+    });
+
+    // Show submit button
+    document.getElementById("submitBtn").style.display = "inline-block";
+  }
+
+  function submitAssessment() {
+    const role = document.getElementById("roleSelect").value;
+    localStorage.setItem("assessmentCompleted_" + role, "true");
+
+    alert("✅ Assessment completed successfully!");
+
+    document.getElementById("assessmentSection").style.display = "none";
+    document.getElementById("trainingStatus").innerText =
+      "🎉 Training & Assessment for " + role + " completed.";
+  }
+</script>
+<footer>
+    &copy; 2025 HRMS System | Designed to make things easier
+  </footer>
+</body>
+</html>

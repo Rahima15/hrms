@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post-Acceptance CRM Triggers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    #nextSteps {
+      margin-top: 30px;
+      display: none;
+    }
+    #nextSteps button {
+      margin: 10px 0;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <h1>🌐 HRMS Workflow System</h1>
+    <p>Manage interviews, pre-joining, training, and more!</p>
+  </header>
+<h2>Offer Acceptance Portal</h2>
+
+<label>Joining Date:</label>
+<input type="date" id="joiningDate">
+
+<br><br>
+<button onclick="acceptOffer()">✅ Accept Offer</button>
+
+<div id="confirmation" style="margin-top:20px;color:green;font-weight:bold;"></div>
+
+<div id="nextSteps">
+  <h3>🔓 Next Steps</h3>
+  <button onclick="joinTraining()">Join Training</button><br>
+  <button onclick="completeAssessment()">Complete Assessment</button>
+</div>
+
+<script>
+  function acceptOffer() {
+    const date = document.getElementById("joiningDate").value;
+    if (!date) {
+      alert("Please select a joining date.");
+      return;
+    }
+
+    localStorage.setItem("joiningDate", date);
+
+    // Simulate email and WhatsApp
+    alert("📧 Email sent to candidate with joining date: " + date);
+    alert("📱 WhatsApp message sent with joining date: " + date);
+
+    document.getElementById("confirmation").innerText = `Offer Accepted. Joining on ${date}`;
+    document.getElementById("nextSteps").style.display = "block";
+  }
+
+  function joinTraining() {
+    alert("Redirecting to Training Module...");
+    // window.location.href = "training.html"; // optional real redirection
+  }
+
+  function completeAssessment() {
+    alert("Redirecting to Assessment Module...");
+    // window.location.href = "assessment.html"; // optional real redirection
+  }
+</script>
+<footer>
+    &copy; 2025 HRMS System | Designed to make things easier
+  </footer>
+</body>
+</html>
